@@ -11,6 +11,7 @@ from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
+from plugins.fsub import ForceSub
 import re
 import json
 import base64
@@ -85,8 +86,13 @@ async def start(client, message):
             parse_mode=enums.ParseMode.HTML
         )
         return
-    
+    kk, file_id = message.command[1].split("_", 1) if "_" in message.command[1] else (False, False)
+    pre = ('checksubp' if kk == 'filep' else 'checksub') if kk else False
 
+    status = await ForceSub(client, message, file_id=file_id, mode=pre)
+    if not status:
+        return
+    
     data = message.command[1]
     try:
         pre, file_id = data.split('_', 1)
