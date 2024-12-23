@@ -81,4 +81,26 @@ Name - {}
     
     RESTART_TXT = """
 <b><u>𝖡𝗈𝗍 𝖱𝖾𝗌𝗍𝖺𝗋𝗍𝖾𝖽 ✅</u></b>"""
+    
+    HELP_TXT = """ 
+❗️How to Search Movies Here❓ 
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+1. Just Send Movie Name and Movie Released Year Correctly.
+(Check Google for Correct Movie Spelling and Movie Released Year) 
+
+Examples: - 
+Oppam 2016
+Baahubali 2015
+
+Oppam 2016 1080p
+Baahubali 2015 1080p
+(For Getting only 1080p Quality Files)
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+Baahubali 2015 Malayalam 
+Baahubali 2015 Tamil 
+(For Dubbed Movie Files)
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+❗️On Android, Better Use <a href=https://play.google.com/store/apps/details?id=org.videolan.vlc> VLC Media Player </a> For Watch Movie's.
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+Cᴏɴᴛᴀᴄᴛ Bᴏᴛ Dᴇᴠᴇʟᴏᴘᴇʀ (Oʀ) Rᴇᴘᴏʀᴛ Bᴜɢꜱ..!! 👉 @Ck_admins_bot"""
 
