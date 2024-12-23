@@ -393,16 +393,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "pages":
         await query.answer()
-#ALERT FN IN SPELL CHECK FOR LANGAUGES TO KNOW HOW TO TYPE MOVIES esp english spell check goto adv spell check to check donot change the codes      
-    elif query.data == "esp":
-        await query.answer(text=script.ENG_SPELL, show_alert="true")
-    elif query.data == "msp":
-        await query.answer(text=script.MAL_SPELL, show_alert="true")
-    elif query.data == "hsp":
-        await query.answer(text=script.HIN_SPELL, show_alert="true")
-    elif query.data == "tsp":
-        await query.answer(text=script.TAM_SPELL, show_alert="true")
-        
+
     elif query.data == "start":
         buttons = [[
             InlineKeyboardButton('🖥Oᴛᴛ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ🖥', url=f'https://t.me/+EcKqKBOrLHE3YTZl')
