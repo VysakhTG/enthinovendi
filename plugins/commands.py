@@ -42,20 +42,13 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton(' 𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽𝘀 ', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('🖥Oᴛᴛ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ🖥', url=f'https://t.me/+EcKqKBOrLHE3YTZl')
             ],[
-            InlineKeyboardButton('ʜᴇʟᴘ', callback_data='help'),
-            InlineKeyboardButton(' ᴀʙᴏᴜᴛ', callback_data='about')
-        ], [
-             InlineKeyboardButton(f'ᴏᴛᴛ ᴜᴘᴅᴀᴛᴇs​', url='https://t.me/new_ott_movies3'),
-             InlineKeyboardButton(f'ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ', url='https://t.me/mn_movies2'),
-            InlineKeyboardButton('ʀᴇᴘᴏ', url='https://github.com/mn-bots/ShobanaFilterBot')
-         ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        #add emoji loading then run 1 sec and dlt
-        m=await message.reply_text("ShobanaFilterBot") 
-        await asyncio.sleep(1.2)#1.2sec sleep
-        await m.delete()
+            InlineKeyboardButton('👥️Cᴏᴍᴍᴜɴɪᴛʏ Lɪɴᴋs👥️', callback_data='community')
+            ],[
+            InlineKeyboardButton('⚓️Lᴀᴛᴇsᴛ Mᴏᴠɪᴇ Rᴇʟᴇᴀsᴇs⚓️', url='https://t.me/+HVEtxLyGtrs2YTI1'),
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)      
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
@@ -69,16 +62,13 @@ async def start(client, message):
             await ForceSub(client, message)
             return        
         buttons = [[
-            InlineKeyboardButton(' 𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽𝘀 ', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('🖥Oᴛᴛ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ🖥', url=f'https://t.me/+EcKqKBOrLHE3YTZl')
             ],[
-            InlineKeyboardButton(' ʜᴇʟᴘ', callback_data='help'),
-            InlineKeyboardButton('ᴀʙᴏᴜᴛ', callback_data='about')
-        ],[
-             InlineKeyboardButton(f'ᴏᴛᴛ ᴜᴘᴅᴀᴛᴇs​', url='https://t.me/new_ott_movies3'),
-             InlineKeyboardButton(f'ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ', url='https://t.me/mn_movies2'),
-            InlineKeyboardButton('ʀᴇᴘᴏ', url='https://github.com/mn-bots/ShobanaFilterBot')
-         ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
+            InlineKeyboardButton('👥️Cᴏᴍᴍᴜɴɪᴛʏ Lɪɴᴋs👥️', callback_data='community')
+            ],[
+            InlineKeyboardButton('⚓️Lᴀᴛᴇsᴛ Mᴏᴠɪᴇ Rᴇʟᴇᴀsᴇs⚓️', url='https://t.me/+HVEtxLyGtrs2YTI1'),
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)      
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
