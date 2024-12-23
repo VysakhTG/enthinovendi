@@ -19,6 +19,12 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
+FOLLOW_UP_TXT = (
+    "<b><blockquote>❗️Send Movie Name and Year Correctly 👍</blockquotez></b>\n\n"
+    "<b><blockquote>📌 മൂവിയുടെ പേര്, വർഷം എഴുതി അയക്കുക 👍</blockquote></b>"
+)
+
+
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
@@ -54,6 +60,13 @@ async def start(client, message):
             caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
+        )
+        await asyncio.sleep(1)
+
+        # Send the follow-up message
+        await message.reply_text(
+            text=FOLLOW_UP_TXT,
+            parse_mode=enums.ParseMode.MARKDOWN
         )
         return
     
