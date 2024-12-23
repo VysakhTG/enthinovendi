@@ -14,13 +14,14 @@ from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, REQ_CHANNEL 
 from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 from Script import script
 import asyncio
 from datetime import date, datetime
+from database.join_reqs import JoinReqs 
 import pytz
 
 # peer id invaild fixxx
@@ -61,6 +62,17 @@ class Bot(Client):
         temp.ME = me.id
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name
+        if REQ_CHANNEL == None:
+            with open("./dynamic.env", "wt+") as f:
+                req = await JoinReqs().get_fsub_chat()
+                if req is None:
+                    req = False
+                else:
+                    req = req['chat_id']
+                f.write(f"REQ_CHANNEL={req}\n")
+            logging.info("Loading REQ_CHANNEL from database...")
+            os.execl(sys.executable, sys.executable, "bot.py")
+            return
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
