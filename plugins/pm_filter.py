@@ -428,8 +428,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton("⭕️ 𝗚𝗘𝗧 𝗢𝗨𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗟𝗜𝗡𝗞𝗦 ⭕️", url="https://t.me/+HVEtxLyGtrs2YTI1")  
             ],[
-            InlineKeyboardButton('🪬 𝑯𝒐𝒎𝒆 🪬', callback_data='start'),
-            InlineKeyboardButton('🗣 𝑨𝒅𝒎𝒊𝒏', url=f"https://t.me/Ck_admins_bot")
+            InlineKeyboardButton('🪬 ʜᴏᴍᴇ 🪬', callback_data='start'),
+            InlineKeyboardButton('🗣 ᴀᴅᴍɪɴ', url=f"https://t.me/Ck_admins_bot")
             ],[
             InlineKeyboardButton('🤷‍♂️ 𝐇𝐎𝐖 𝐓𝐎 𝐑𝐄𝐐𝐔𝐄𝐒𝐓 𝐌𝐎𝐕𝐈𝐄𝐒 🤷🏻', callback_data='movereq'),
         
@@ -449,7 +449,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "movereq":
         buttons = [[
             InlineKeyboardButton("👥 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐆𝐫𝐨𝐮𝐩", url=f"https://t.me/Cinemakalavara_Group"),
-            InlineKeyboardButton('⬅️ 𝑩𝒂𝒄𝒌', callback_data='commun')
+            InlineKeyboardButton('⬅️ ʙᴀᴄᴋ', callback_data='commun')
         ]]
         await client.edit_message_media(
             query.message.chat.id, 
