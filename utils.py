@@ -4,6 +4,7 @@ from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, REQ_CHANNEL
 from imdb import IMDb
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton
+from info import *
 from pyrogram import enums
 from typing import Union
 import re
