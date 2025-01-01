@@ -29,7 +29,6 @@ from pyrogram import utils as pyroutils
 pyroutils.MIN_CHAT_ID = -999999999999
 pyroutils.MIN_CHANNEL_ID = -100999999999999
 
-from plugins.webcode import bot_run
 from os import environ
 from aiohttp import web as webserver
 
@@ -84,12 +83,7 @@ class Bot(Client):
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_GC_TXT.format(today, time))
-        client = webserver.AppRunner(await bot_run())
-        await client.setup()
-        bind_address = "0.0.0.0"
-        await webserver.TCPSite(client, bind_address,
-        PORT_CODE).start()
-
+     
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
